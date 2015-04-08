@@ -4,7 +4,7 @@
 sudo -v
 
 realpath() {
-    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+  cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd
 }
 
 echo Install all AppStore Apps at first!
@@ -99,4 +99,6 @@ echo '.apps' > "${HOME}/.setup"
 
 echo Running other setup scripts
 
-ls realpath "$0"/scripts
+for file in $(realpath)/scripts/*; do
+  bash $file
+done
