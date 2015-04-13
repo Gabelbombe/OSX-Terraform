@@ -18,8 +18,30 @@ ruby -e "$(curl -fsSL https://raw.github.com/wellsriley/YosemiteSanFranciscoFont
 echo Install Homebrew, Maria, wget and cask
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew tap homebrew/science
+
+# Update bash
+brew install bash
+echo "$(which bassh)" |sudo tee -a /etc/shells
+
+# Add fish
+brew install fish
+echo "$(which fish)" |sudo tee -a /etc/shells
+
+chsh -s "$(which fish)" 
+
 brew install wget
 brew install mariadb
+## To connect:
+##     mysql -uroot
+##
+## To have launchd start mariadb at login:
+##     mkdir -p ~/Library/LaunchAgents
+##     ln -sfv /usr/local/opt/mariadb/*.plist ~/Library/LaunchAgents
+## Then to load mariadb now:
+##     launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mariadb.plist
+## Or, if you don't want/need launchctl, you can just run:
+##     mysql.server start
+
 brew install go
 brew install node
 brew install ant
