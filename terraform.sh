@@ -13,7 +13,15 @@ read -p "Press any key to continue... " -n1 -s
 echo '\n'
 
 echo Install and Set San Francisco as System Font
-ruby -e "$(curl -fsSL https://raw.github.com/wellsriley/YosemiteSanFranciscoFont/master/install)"
+brew install Caskroom/cask/xquartz
+brew install fontforge --with-python
+
+## test
+python -c 'import fontforge; print "FontForge is correctly working in Python"'
+
+
+###DMCA Takedown
+###ruby -e "$(curl -fsSL https://raw.github.com/wellsriley/YosemiteSanFranciscoFont/master/install)"
 
 echo Install Homebrew, Maria, wget and cask
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
@@ -27,7 +35,7 @@ echo "$(which bassh)" |sudo tee -a /etc/shells
 brew install fish
 echo "$(which fish)" |sudo tee -a /etc/shells
 
-chsh -s "$(which fish)" 
+chsh -s "$(which fish)"
 
 brew install wget
 brew install mariadb
