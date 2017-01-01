@@ -29,7 +29,7 @@ brew tap homebrew/science
 
 # Update bash
 brew install bash
-echo "$(which bassh)" |sudo tee -a /etc/shells
+echo "$(which bash)" |sudo tee -a /etc/shells
 
 # Add fish
 brew install fish
